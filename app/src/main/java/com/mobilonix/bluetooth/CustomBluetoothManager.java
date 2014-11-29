@@ -40,6 +40,7 @@ public class CustomBluetoothManager
 		if(!blueToothAdapter.isEnabled()) {
 			Intent intent = new Intent(blueToothAdapter.ACTION_REQUEST_ENABLE);
 			a.startActivityForResult(intent,REQUEST_BT);
+	        Utils.showToast(context, "Bluetooth not enabled. Redircting...");
 		} else {
 			Utils.showToast(context, "Bluetooth is currently enabled...");
 		}
@@ -139,13 +140,20 @@ public class CustomBluetoothManager
 		}
 	}
 	
-	void scan() {
+	public ArrayList<String> scan() {
 		//so bluetooth pairin vs connected has two different meanings.  pairing means that two dvices are aware of each others existance and share some data but theycant transmit data between eacher until an RfCom connection is established between them
-	    pairedDevices = blueToothAdapter.getBondedDevices();
+	    ArrayList<String> currentDeviceList = new ArrayList<String>();
+		pairedDevices = blueToothAdapter.getBondedDevices();
+		
+		for(BluetoothDevice d : pairedDevices) {
+			currentDeviceList.add(d.getAddress());
+		}
 		
 		//the goal for tommorrow is to be able to connect to a bluetooth device and to be able to send a message t that other device and get one back possible using the same library created here
         //also kust oearn about bluetooth profiles bluetooth profiles are basically wirless devi es proiles that allow for the comminciation between devices, for example the hands free profile.  why are profiles necessry? cant i just do device discovery? how many different tpes ofnprofiles arer there?
         // so to whati you have alist of the paired devices why donyu a separate discovert stage throughbstartbdiscovery?
+	    
+		return currentDeviceList;
 	}
 	
 	public void shutOff(int timeTillShutdown) {
@@ -353,4 +361,5 @@ public class CustomBluetoothManager
 	//al the apis are in the android.bluetooth package so badilsly if a drvice isnt paired cn you still locate it? how does the mac addfess come i to play and what does to instatniate a device mean
 	//s the idea is to find otu which devices are connected via the bldtooth adaoter and then which fe ies  can younestablsihg a bluetooth service tock
 	//so bluetooth interactions go over input anfput dttesm objevy soudn sks pel enoigj and you can receive the state of the devu enusing the blue th so the bleu tooth and bluetooth adm psotions let you discoevt other devi es o bdlud tooh comenucisifonsoccur over fdzame rsdji 
+
 }
