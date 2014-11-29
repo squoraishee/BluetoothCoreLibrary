@@ -10,6 +10,9 @@ public class WifiInfoActivity extends Activity
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-	    setContentView(R.layout.main);
+	    setContentView(R.layout.wifi_reference_activity);
+		
+		customWifiManager = new CustomWifiManager(this);
+	    customWifiManager.init();
 	}
 }

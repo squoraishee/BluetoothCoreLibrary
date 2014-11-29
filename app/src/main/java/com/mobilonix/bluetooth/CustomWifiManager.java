@@ -44,7 +44,6 @@ public class CustomWifiManager
 			Log.v("","Get scan results");
 		}
 		
-		
 	}
 	
 }
