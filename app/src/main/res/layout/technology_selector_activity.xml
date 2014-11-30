@@ -2,5 +2,24 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical">
-    
+    <LinearLayout
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:orientation="horizontal">
+	    <Button
+		   android:text="Select Bluetooth"
+	       android:id="@+id/select_bluetooth_button"
+		   android:layout_weight="0.5"
+		   android:layout_width="wrap_content"
+		   android:layout_height="wrap_content">
+	    </Button>
+	    <Button
+		   android:text="Select Wifi"
+		   android:id="@+id/select_wifi_button"
+	       android:layout_weight="0.5"
+		   android:layout_width="wrap_content"
+		   android:layout_height="wrap_content">
+	    </Button>
+    </LinearLayout>
+	
 </LinearLayout>

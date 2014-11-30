@@ -2,5 +2,15 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical">
-    
+    <Button
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/wifi_scan_button"
+		android:text="Scan">
+	</Button>
+	<ListView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/scan_list">
+    </ListView>
 </LinearLayout>
