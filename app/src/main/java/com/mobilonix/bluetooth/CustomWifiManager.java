@@ -13,6 +13,13 @@ public class CustomWifiManager
 	WifiManager wifiManager;
 	WifiScanReceiver scanReceiver;
 	
+	//non core functionaiity
+	WifiManager.WifiLock lock;
+	
+	//Signal monitoring
+	boolean signalMonitorServiceEnabled = false;
+	ArrayList<Double> signalData;
+	
 	//the wifi manager lets you access all the wifi i fo of the andorid system it acts at a very low lev
 	public CustomWifiManager(Context context) {
 		this.context = context;
@@ -71,4 +78,50 @@ public class CustomWifiManager
 		
 	}
 	
+	
+	void signalMonitorService(boolean state) {
+		
+		if(state) {
+			signalMonitorServiceEnabled = true;
+			signalData = new ArrayList<Double>();
+		} else {
+			signalMonitorServiceEnabled = false;
+			return;
+		}
+		
+		new Thread(new Runnable() {
+
+				@Override
+				public void run()
+				{
+				     while(signalMonitorServiceEnabled){
+						 
+						 try
+						 {
+							 Thread.sleep(1000);
+						 }
+						 catch (InterruptedException e)
+						 {
+							 
+						 }
+
+					 }
+				}
+				
+		});
+	}
+	
+	void enableWiFiLock(int lockType){
+		//how long before a wifi connection goes idke. is ther anyway to hackwifi lock to make it work even when the settings are of of for enabling.?
+		//what else does the wake lock permission effect.  is it toonly to prevent the device from faling aslep or all features f the device including wifi
+
+		//so there are 3 separate types of wifi locks.  there is he standard ifi lock where they wifi is kep active, the high prformance lock how does thatbwork why is tha different and  the scan only lock all are obtained from the wifi manager service
+        lock = wifiManager.createWifiLock(lockType,"LockTag");
+		lock.acquire();
+		
+	}
+	//so under what cases woukd a wifi lokc be needed if it isn't handle by aitplane mode or it isnt taken care of setwifi enabled?  it is super sceded.  when does the wii go out of idle state
+    void releaseWifiLock() {
+		lock.release();
+	}
 }

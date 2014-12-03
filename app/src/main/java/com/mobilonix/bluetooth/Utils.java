@@ -40,4 +40,10 @@ public class Utils
 		}
 
 	}
+	
+	void getFile(String remoteLocation,String localLocation) {
+		
+		
+		
+	}
 }
