@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- From: file:/Users/itadmin/Desktop/Projects/Personal/BluetoothCoreLibrary/app/src/main/res/values/strings.xml -->
+    <eat-comment />
+
+    <string name="app_name">BluetoothCoreLib</string>
+    <string name="hello_world">Hello world!</string>
+
+</resources>

@@ -230,7 +230,7 @@ public class CustomBluetoothManager
 		}
 	}
 	
-	class BluetoothConnectionThread {
+	class BluetoothConnectionThread extends Thread {
 		
 		BluetoothAdapter adapter;
 		BluetoothSocket socket;
